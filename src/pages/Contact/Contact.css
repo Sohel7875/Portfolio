@@ -1,0 +1,36 @@
+.contact-container{
+    width: 50% !important;
+   
+}
+
+.contact-container input,textarea{
+    border: 2px solid var(--color-dark);
+    width: 100%;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    background:transparent;
+   color: var(--color-dark);
+   resize: none;
+}
+
+.contact-container button{
+    background: transparent;
+    margin-top: 0 !important;
+}
+
+/* Max Width 1024px */
+@media (max-width:1024px) {
+    .contact-container{
+        width: 60% !important;
+    }
+
+}
+/* Max Width 600px */
+@media (max-width:600px) {
+    .contact-container{
+        width: 90% !important;
+    }
+
+}

@@ -1,0 +1,22 @@
+.heading-text{
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.heading-text span{
+   color: var(--color-primary);
+}
+
+/* Max Width 1024px */
+@media (max-width:1024px) {
+    .heading-text{
+        font-size:2.2rem;
+    }
+}
+/* Max Width 600px */
+@media (max-width:600px) {
+    .heading-text{
+        font-size:1.8rem;
+
+    }
+}
