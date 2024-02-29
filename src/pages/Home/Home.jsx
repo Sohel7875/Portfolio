@@ -2,6 +2,8 @@ import React from 'react'
 import "./Home.css"
 import HeaderImage from '../../assets/My Photo.jpg'
 
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'

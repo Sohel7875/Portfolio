@@ -44,8 +44,10 @@ const Contact = () => {
     };
 
    try {
-    const response = await axios.post('http://localhost:8001/sencontact',formData)
+    console.log('hii')
+    const response = await axios.post('https://portfolio-36n4-oz4r9dh3r-sssohel786-gmailcom.vercel.app/email',formData)
  
+
 
     if (response.status === 200) {
       setLoading(false)
@@ -54,7 +56,7 @@ const Contact = () => {
       setTimeout(() => {
         setStateMessage(null);
       }, 5000);
-      console.log(response)
+      console.log(response.data)
       
      
     } else {
