@@ -22,7 +22,7 @@ const Home = () => {
             Aspiring Full Stack Developer With Strong Foundation in React.js, React Native, Javacript, Node.js and MongoDB. Eager to Contribute Skills And Learn in Dynamic Software Development Environment.
           </p>
        <Link to={'/about'} className='btn'>
-        About me
+        About Me Hello World
         <span><FontAwesomeIcon icon={faArrowRight}/></span>
        </Link>
         </div>
