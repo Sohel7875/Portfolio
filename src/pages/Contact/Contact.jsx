@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import Loader from "react-js-loader"
+import emailjs from '@emailjs/browser'
 
 
 import './Contact.css'
@@ -26,8 +26,6 @@ const Contact = () => {
 
   const [Theme, setTheme] = useState(getLocalStorageTheme());
 
-  
-
 
 
   const handleSubmit = async(e) =>{
@@ -35,46 +33,42 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setLoading(true)
-
-    const formData = {
-      name: e.target.elements.name.value,
-      email: e.target.elements.email.value,
-      number: e.target.elements.number.value,
-      message: e.target.elements.message.value,
-    };
-
-   try {
-    console.log('hii')
-    const response = await axios.post('https://portfolio-36n4-oz4r9dh3r-sssohel786-gmailcom.vercel.app/email',formData)
  
+    emailjs
+    .sendForm(
+      process.env.REACT_APP_SERVICE_ID,
+      process.env.REACT_APP_TEMPLATE_ID,
+      e.target,
+      process.env.REACT_APP_PUBLIC_KEY
+    )
+    .then(
+      (result) => {
+        e.target.reset();
+        setLoading(false)
+        setStateMessage('Message sent!');
+        setIsSubmitting(false);
+        setTimeout(() => {
+          setStateMessage(null);
+        }, 5000); // hide message after 5 seconds
+      },
+      (error) => {
+        setLoading(false)
+        e.target.reset();
+        setStateMessage('Something went wrong, please try again later');
+        setIsSubmitting(false);
+        setTimeout(() => {
+          setStateMessage(null);
+        }, 5000); // hide message after 5 seconds
+      }
+    );
+  
+  // Clears the form after sending the email
+ 
+};
 
 
-    if (response.status === 200) {
-      setLoading(false)
-      setStateMessage('Message sent!');
-      setIsSubmitting(false);
-      setTimeout(() => {
-        setStateMessage(null);
-      }, 5000);
-      console.log(response.data)
-      
-     
-    } else {
-      console.log("error creating order", response);
-      setLoading(false)
-      setStateMessage('Something went wrong, please try again later');
-      setIsSubmitting(false);
-      setTimeout(() => {
-        setStateMessage(null);
-      }, 5000);
-    }
-   } catch (error) {
-    setLoading(false)
-    setStateMessage('Something went wrong, please try again later');
-    console.log(error)
-   }
     
-  }
+  
 
 
   return (
@@ -82,9 +76,10 @@ const Contact = () => {
     <HeadingText  title={'Contact'} titlePrimary={'me'}/>
     <div className="container contact-container">
       <form  onSubmit={handleSubmit}>
-        <input type='text'  name='name' required placeholder='Your Name' />
-        <input type='email' name='email' required placeholder='Your Email' />
-        <input type='text' name='number' required placeholder='Your Number' />
+        <input type='text'  name='user_name' required placeholder='Your Name' />
+        <input type='email' name='user_email' required placeholder='Your Email' />
+        <input type='text' name='user_number' maxLength={10}
+  minLength={10} required placeholder='Your Number' />
         <textarea name="message" id="message" rows="6" placeholder='Your Message'></textarea>
         <button type='submit' className='btn'>
           Send
