@@ -27,23 +27,27 @@ const Contact = () => {
   const [Theme, setTheme] = useState(getLocalStorageTheme());
 
 
-
+ 
   const handleSubmit = async(e) =>{
     e.persist();
     e.preventDefault();
     setIsSubmitting(true);
     setLoading(true)
  
+
+    let REACT_APP_SERVICE_ID = 'service_2659qu9'
+    let REACT_APP_TEMPLATE_ID = 'template_xqg2o0m'
+    let REACT_APP_PUBLIC_KEY = 'pss5pg5Y7CM_ZvPbF'
     emailjs
     .sendForm(
-      process.env.REACT_APP_SERVICE_ID,
-      process.env.REACT_APP_TEMPLATE_ID,
+     REACT_APP_SERVICE_ID,
+      REACT_APP_TEMPLATE_ID,
       e.target,
-      process.env.REACT_APP_PUBLIC_KEY
+      REACT_APP_PUBLIC_KEY
     )
     .then(
       (result) => {
-        e.target.reset();
+        // e.target.reset();
         setLoading(false)
         setStateMessage('Message sent!');
         setIsSubmitting(false);
@@ -53,7 +57,7 @@ const Contact = () => {
       },
       (error) => {
         setLoading(false)
-        e.target.reset();
+        // e.target.reset();
         setStateMessage('Something went wrong, please try again later');
         setIsSubmitting(false);
         setTimeout(() => {
