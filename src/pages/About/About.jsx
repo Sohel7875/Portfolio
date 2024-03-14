@@ -1,5 +1,5 @@
 import React from 'react'
-import CV from '../../assets/Sohel_Shaikh_7875310412.pdf'
+import CV from '../../assets/Sohel_Shaikh_7875310412_Resume.pdf'
 
 import "./About.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
